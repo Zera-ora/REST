@@ -1,0 +1,26 @@
+{
+    "name": "@raptor/rest",
+    "version": "v0.1.0-alpha",
+    "description": "Simple Node.js based REST API",
+    "keywords": [
+        "Node.js",
+        "REST",
+        "RESTful",
+        "API",
+        "simple"
+    ],
+    "homepage": "https://github.com/Zera-ora/REST#readme",
+    "bugs": "https://github.com/Zera-ora/REST/issues",
+    "license": "MIT",
+    "author": {
+        "name": "zera-ora",
+        "email": "zera-ora@tuta.io",
+        "url": "https://github.com/Zera-ora"
+    },
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Zera-ora/REST.git",
+        "directory": "src"
+    }
+}

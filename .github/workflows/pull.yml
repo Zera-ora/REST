@@ -1,0 +1,35 @@
+name: Create Pull Request
+
+on:
+  create:
+    tags-ignore:
+      - '*'
+
+jobs:
+  pull:
+    name: Create Pull Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Get version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/heads\//}
+        
+      - name: Create milestone
+        uses: WyriHaximus/github-action-create-milestone@0.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          title: ${{ steps.get_version.outputs.VERSION }}
+      
+      - name: Create Pull Request
+        uses: repo-sync/pull-request@v2.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          pr_title: '${{ steps.get_version.outputs.VERSION }} Proposal'
+          pr_reviewer: 'Zera-ora'
+          pr_assignee: 'Zera-ora'
+          pr_label: 'Update,Proposal'
+          pr_milestone: ${{ steps.get_version.outputs.VERSION }}
